@@ -87,6 +87,7 @@ class Gem {
 
 
 
+
 const grid = {
     height: 8,
     width: 8

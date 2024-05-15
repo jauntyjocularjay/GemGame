@@ -4,7 +4,7 @@
   "description": "match-3 game",
   "main": "index.html",
   "scripts": {
-    "gitcommit": "bash sh/gitCommit.sh",
+    "commit": "bash sh/gitCommit.sh",
     "dev2beta": "bash sh/gitDev2Beta.sh",
     "beta2master": "bash sh/gitBeta2Master.sh",
     "dev2master": "bash sh/gitDev2Master.sh",
