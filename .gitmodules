@@ -1,0 +1,6 @@
+[submodule "sh"]
+	path = sh
+	url = http://github.com/GeorgeSchafer/KwikGit
+[submodule "vjsc"]
+	path = vjsc
+	url = http://github.com/GeorgeSchafer/VJSComponents
