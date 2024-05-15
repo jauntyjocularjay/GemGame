@@ -1,3 +1,9 @@
 [submodule "vjsc"]
 	path = vjsc
 	url = https://github.com/jauntyjocularjay/VanillaJSComponents.git
+[submodule "sh"]
+	path = sh
+	url = https://github.com/jadedrakerider/KwikGit.git
+[submodule "grid"]
+	path = grid
+	url = https://github.com/jauntyjocularjay/OpenGameGrid.git
