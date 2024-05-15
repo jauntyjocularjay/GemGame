@@ -1,0 +1,25 @@
+{
+  "name": "vsjcomponents",
+  "version": "0.1.0",
+  "description": "library for building vanillajs sites",
+  "main": "vanilla.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgeSchafer/VanillaJSComponents.git"
+  },
+  "keywords": [
+    "library",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "GeorgeSchafer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeorgeSchafer/VanillaJSComponents/issues"
+  },
+  "homepage": "https://github.com/GeorgeSchafer/VanillaJSComponents#readme"
+}
