@@ -4,3 +4,6 @@
 [submodule "grid"]
 	path = grid
 	url = https://github.com/jauntyjocularjay/OpenGameGrid.git
+[submodule "sh"]
+	path = sh
+	url = https://github.com/jauntyjocularjay/KwikGit.git
