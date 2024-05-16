@@ -64,15 +64,27 @@ import { Grid } from './grid/Grid.mjs'
 
 
 
+
+const img =
+{
+    red: './img/red.svg',
+    orange: './img/orange.svg',
+    yellow: './img/yellow.svg',
+    green: './img/green.svg',
+    blue: './img/blue.svg',
+    violet: './img/violet.svg',
+}
+
+const red = new Img(img.red, 'red', ['gem', 'primary', 'red'])
+const orange = new Img(img.orange, 'orange', ['gem', 'secondary', 'orange'])
+const yellow = new Img(img.yellow, 'yellow', ['gem', 'primary', 'yellow'])
+const green = new Img(img.green, 'green', ['gem', 'secondary', 'green'])
+const blue = new Img(img.blue, 'blue', ['gem', 'primary', 'blue'])
+const violet = new Img(img.violet, 'violet', ['gem', 'secondary', 'violet'])
+const white = new Img(img.white, 'white', ['gem', 'wild', 'white'])
+const gray = new Img(img.gray, 'gray', ['gem', 'dud', 'gray'])
+
 class Gem {
-    red = new Img(gem.red, 'red', ['gem', 'primary'])
-    orange = new Img(gem.orange, 'orange', ['gem', 'secondary'])
-    yellow = new Img(gem.yellow, 'yellow', ['gem', 'primary'])
-    green = new Img(gem.green, 'green', ['gem', 'secondary'])
-    blue = new Img(gem.blue, 'blue', ['gem', 'primary'])
-    violet = new Img(gem.violet, 'violet', ['gem', 'secondary'])
-    white = new Img(gem.white, 'white', ['gem'])
-    gray = new Img(gem.gray, 'gray', ['gem'])
 
     constructor(color=Gem.gray)
     {
@@ -83,14 +95,16 @@ class Gem {
     {
         const i = Math.floor(Math.random() * 8)
 
-        if(i === 0){ return Gem.gray }
-        else if (i === 1){ return Gem.red } 
-        else if (i === 2){ return Gem.orange }
-        else if (i === 3){ return Gem.yellow }
-        else if (i === 4){ return Gem.green }
-        else if (i === 5){ return Gem.blue }
-        else if (i === 6){ return Gem.violet }
-        else if (i === 7){ return Gem.white }
+        console.log('i', i)
+
+        if(i === 0){ return new Gem(gray) }
+        else if (i === 1){ return new Gem(red) } 
+        else if (i === 2){ return new Gem(orange) }
+        else if (i === 3){ return new Gem(yellow) }
+        else if (i === 4){ return new Gem(green) }
+        else if (i === 5){ return new Gem(blue) }
+        else if (i === 6){ return new Gem(violet) }
+        else if (i === 7){ return new Gem(white) }
         else { throw new Error('Gem.random() generated an out-of-bound integer') }
     }
 }
@@ -99,12 +113,12 @@ class Line
 {
     constructor(int)
     {
-        this.element = new FlexBox(flex.r,['line'], `line${int}`)
+        this.flexBox = new FlexBox(flex.r,['line'], `line${int}`)
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
-            const gem = new Div(['spot','flex-content-default'], `spot-${spot[i]}`)
-            this.element.appendChild(gem)
+            const gem = new Gem.random()
+            console.log('gem', gem)
         }
     }
 
@@ -131,26 +145,31 @@ class Line
 }
 
 class PlayField {
-    constructor()
+    constructor(height)
     {
-        const field = {
-            data: new Grid(8,8),
+        this.field = {
+            data: new Grid(8,height),
             container: new Div(['field'], 'field'),
             lines: []
         }
 
-        field.lines
+        for(let i = 0; i < height; i++)
+        {
+            this.field.lines.push(new Line(i))
+            this.field.container.element.appendChild(this.field.lines[i].flexBox.element)
+        }
+        console.log('this.field.lines', this.field.lines)
     }
-}
 
-const gem =
-{
-    red: './img/red.svg',
-    orange: './img/orange.png',
-    yellow: './img/yellow.png',
-    green: './img/green.png',
-    blue: './img/blue.png',
-    violet: './img/violet.svg',
+    getLine(int)
+    {
+        return this.field.lines[int]
+    }
+
+    getSpot(int, char)
+    {
+        return this.field.lines[int].getSpot(char)
+    }
 }
 
 const css = {
@@ -159,6 +178,10 @@ const css = {
         'color: #fff'
     ]
 }
+
+const play = new PlayField(8)
+
+document.body.appendChild(play.field.container.element)
 
 addAdoptedStyleSheet( parseCSSObject(css) )
 
