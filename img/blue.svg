@@ -2,7 +2,8 @@
   <rect width="32" height="32" x="16" y="16" stroke="#333" stroke-width="1" fill="blue" />
   <rect width="24" height="24" x="20" y="20" stroke="#333" stroke-width="1" fill="none" />
   <rect width="24" height="24" x="16" y="16" stroke="#333" stroke-width="1" fill="none" />
-  <rect width="24" height="24" x="24" y="24" stroke="#333" stroke-width="1" fill="none" />  <rect width="24" height="24" x="20" y="20" stroke="#333" stroke-width="1" fill="none" />
+  <rect width="24" height="24" x="24" y="24" stroke="#333" stroke-width="1" fill="none" />
+  <rect width="24" height="24" x="20" y="20" stroke="#333" stroke-width="1" fill="none" />
   <rect width="24" height="24" x="24" y="16" stroke="#333" stroke-width="1" fill="none" />
   <rect width="24" height="24" x="16" y="24" stroke="#333" stroke-width="1" fill="none" />
 </svg>

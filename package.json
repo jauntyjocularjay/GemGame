@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GeorgeSchafer/gems.git"
+    "url": "git+https://github.com/jauntyjocularjay/GemGame.git"
   },
   "keywords": [
     "puzzle",
@@ -22,7 +22,7 @@
   "author": "GeorgeSchafer",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/GeorgeSchafer/gems/issues"
+    "url": "https://github.com/jauntyjocularjay/GemGame/issues"
   },
-  "homepage": "https://github.com/GeorgeSchafer/gems#readme"
+  "homepage": "https://github.com/jauntyjocularjay/GemGame#readme"
 }
