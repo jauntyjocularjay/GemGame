@@ -73,39 +73,53 @@ const img =
     green: './img/green.svg',
     blue: './img/blue.svg',
     violet: './img/violet.svg',
+    white: './img/white.svg',
+    gray: './img/gray.svg'
 }
 
-const red = new Img(img.red, 'red', ['gem', 'primary', 'red'])
-const orange = new Img(img.orange, 'orange', ['gem', 'secondary', 'orange'])
-const yellow = new Img(img.yellow, 'yellow', ['gem', 'primary', 'yellow'])
-const green = new Img(img.green, 'green', ['gem', 'secondary', 'green'])
-const blue = new Img(img.blue, 'blue', ['gem', 'primary', 'blue'])
-const violet = new Img(img.violet, 'violet', ['gem', 'secondary', 'violet'])
-const white = new Img(img.white, 'white', ['gem', 'wild', 'white'])
-const gray = new Img(img.gray, 'gray', ['gem', 'dud', 'gray'])
+
 
 class Gem {
 
-    constructor(color=Gem.gray)
+    constructor(img=null)
     {
-        this.color = color
+        this.img = img
     }
 
-    static random()
+    static random(spot)
     {
         const i = Math.floor(Math.random() * 8)
+        let gem
+        if(i === 0){ 
+            gem = new Gem(new Img(img.gray, 'gray', ['gem', 'dud', 'gray', flex.flow.default]))
+        }
+        else if (i === 1){
+            gem = new Gem(new Img(img.red, 'red', ['gem', 'primary', 'red', flex.flow.default]))
+        } 
+        else if (i === 2){
+            gem = new Gem(new Img(img.orange, 'orange', ['gem', 'secondary', 'orange', flex.flow.default]))
+        }
+        else if (i === 3){ 
+            gem = new Gem(new Img(img.yellow, 'yellow', ['gem', 'primary', 'yellow', flex.flow.default]))
+        }
+        else if (i === 4){
+            gem = new Gem(new Img(img.green, 'green', ['gem', 'secondary', 'green', flex.flow.default]))
+        }
+        else if (i === 5){
+            gem = new Gem(new Img(img.blue, 'blue', ['gem', 'primary', 'blue', flex.flow.default]))
+        }
+        else if (i === 6){
+            gem = new Gem(new Img(img.violet, 'violet', ['gem', 'secondary', 'violet', flex.flow.default]))
+        }
+        else if (i === 7){
+            gem = new Gem(new Img(img.white, 'white', ['gem', 'wild', 'white', flex.flow.default]))
+        }
+        else {
+            throw new Error('Gem.random() generated an out-of-bound integer')
+        }
 
-        console.log('i', i)
-
-        if(i === 0){ return new Gem(gray) }
-        else if (i === 1){ return new Gem(red) } 
-        else if (i === 2){ return new Gem(orange) }
-        else if (i === 3){ return new Gem(yellow) }
-        else if (i === 4){ return new Gem(green) }
-        else if (i === 5){ return new Gem(blue) }
-        else if (i === 6){ return new Gem(violet) }
-        else if (i === 7){ return new Gem(white) }
-        else { throw new Error('Gem.random() generated an out-of-bound integer') }
+        gem.img.element.id = `spot-${spot}`
+        return gem
     }
 }
 
@@ -117,8 +131,8 @@ class Line
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
-            const gem = new Gem.random()
-            console.log('gem', gem)
+            const gem = Gem.random(spot[i])
+            this.flexBox.element.appendChild(gem.img.element)
         }
     }
 
@@ -158,7 +172,6 @@ class PlayField {
             this.field.lines.push(new Line(i))
             this.field.container.element.appendChild(this.field.lines[i].flexBox.element)
         }
-        console.log('this.field.lines', this.field.lines)
     }
 
     getLine(int)
