@@ -65,33 +65,83 @@ import { Grid } from './grid/Grid.mjs'
 
 
 class Gem {
-    red = new Img(gem.red, 'red', ['gem'])
-    orange = new Img(gem.orange, 'orange', ['gem'])
-    yellow = new Img(gem.yellow, 'yellow', ['gem'])
-    green = new Img(gem.green, 'green', ['gem'])
-    blue = new Img(gem.blue, 'blue', ['gem'])
-    violet = new Img(gem.violet, 'violet', ['gem'])
+    red = new Img(gem.red, 'red', ['gem', 'primary'])
+    orange = new Img(gem.orange, 'orange', ['gem', 'secondary'])
+    yellow = new Img(gem.yellow, 'yellow', ['gem', 'primary'])
+    green = new Img(gem.green, 'green', ['gem', 'secondary'])
+    blue = new Img(gem.blue, 'blue', ['gem', 'primary'])
+    violet = new Img(gem.violet, 'violet', ['gem', 'secondary'])
+    white = new Img(gem.white, 'white', ['gem'])
+    gray = new Img(gem.gray, 'gray', ['gem'])
 
-    constructor(color=null)
+    constructor(color=Gem.gray)
     {
         this.color = color
     }
 
-    random()
+    static random()
     {
-        const i = Math.floor(Math.random() * 6)
+        const i = Math.floor(Math.random() * 8)
 
-        if(i === 0){ return Gem.red }
-        else if (i === 1){ return Gem.orange }
-        else if (i === 2){ return Gem.yellow }
-        else if (i === 3){ return Gem.green }
-        else if (i === 4){ return Gem.blue }
-        else if (i === 5){ return Gem.violet }
+        if(i === 0){ return Gem.gray }
+        else if (i === 1){ return Gem.red } 
+        else if (i === 2){ return Gem.orange }
+        else if (i === 3){ return Gem.yellow }
+        else if (i === 4){ return Gem.green }
+        else if (i === 5){ return Gem.blue }
+        else if (i === 6){ return Gem.violet }
+        else if (i === 7){ return Gem.white }
         else { throw new Error('Gem.random() generated an out-of-bound integer') }
     }
 }
 
-const grid = new Grid(8,8)
+class Line
+{
+    constructor(int)
+    {
+        this.element = new FlexBox(flex.r,['line'], `line${int}`)
+        const spot = ['a','b','c','d','e','f','g','h']
+        for( let i = 0; i < 8; i++)
+        {
+            const gem = new Div(['spot','flex-content-default'], `spot-${spot[i]}`)
+            this.element.appendChild(gem)
+        }
+    }
+
+    getSpot(char)
+    {
+        if('abcdefgh'.includes(char) === false){ 
+            throw new Error('Line.getSpot() received an invalid character')
+        }
+        else {
+            return this.element.querySelector(`#spot-${char}`)
+        }
+    }
+
+    insertGem(char, gem)
+    {
+        this.getSpot(char).appendChild(gem)
+    }
+
+    removeGem(char)
+    {
+        this.getSpot(char).removeChild()
+    }
+
+}
+
+class PlayField {
+    constructor()
+    {
+        const field = {
+            data: new Grid(8,8),
+            container: new Div(['field'], 'field'),
+            lines: []
+        }
+
+        field.lines
+    }
+}
 
 const gem =
 {
