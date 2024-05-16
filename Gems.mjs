@@ -58,7 +58,40 @@ import {
     // Functions
     getStylesheetByFileName,
     addAdoptedStyleSheet,
+    parseCSSObject
 } from './vjsc/vanilla.mjs'
+import { Grid } from './grid/Grid.mjs'
+
+
+
+class Gem {
+    red = new Img(gem.red, 'red', ['gem'])
+    orange = new Img(gem.orange, 'orange', ['gem'])
+    yellow = new Img(gem.yellow, 'yellow', ['gem'])
+    green = new Img(gem.green, 'green', ['gem'])
+    blue = new Img(gem.blue, 'blue', ['gem'])
+    violet = new Img(gem.violet, 'violet', ['gem'])
+
+    constructor(color=null)
+    {
+        this.color = color
+    }
+
+    random()
+    {
+        const i = Math.floor(Math.random() * 6)
+
+        if(i === 0){ return Gem.red }
+        else if (i === 1){ return Gem.orange }
+        else if (i === 2){ return Gem.yellow }
+        else if (i === 3){ return Gem.green }
+        else if (i === 4){ return Gem.blue }
+        else if (i === 5){ return Gem.violet }
+        else { throw new Error('Gem.random() generated an out-of-bound integer') }
+    }
+}
+
+const grid = new Grid(8,8)
 
 const gem =
 {
@@ -70,25 +103,13 @@ const gem =
     violet: './img/violet.svg',
 }
 
-const red = new Img(gem.red, 'red', ['gem'])
-const orange = new Img(gem.orange, 'orange', ['gem'])
-const yellow = new Img(gem.yellow, 'yellow', ['gem'])
-const green = new Img(gem.green, 'green', ['gem'])
-const blue = new Img(gem.blue, 'blue', ['gem'])
-const violet = new Img(gem.violet, 'violet', ['gem'])
-
-class Gem {
-    constructor(color,)
-    {
-        this.color = color
-        
-    }
+const css = {
+    html: [
+        'background-color: #333',
+        'color: #fff'
+    ]
 }
 
+addAdoptedStyleSheet( parseCSSObject(css) )
 
 
-
-const grid = {
-    height: 8,
-    width: 8
-}
