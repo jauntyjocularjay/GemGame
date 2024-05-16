@@ -77,7 +77,12 @@ const img =
     gray: './img/gray.svg'
 }
 
-
+const css = {
+    html: [
+        'background-color: #333',
+        'color: #fff'
+    ]
+}
 
 class Gem {
 
@@ -185,17 +190,8 @@ class PlayField {
     }
 }
 
-const css = {
-    html: [
-        'background-color: #333',
-        'color: #fff'
-    ]
-}
-
 const play = new PlayField(8)
 
 document.body.appendChild(play.field.container.element)
 
 addAdoptedStyleSheet( parseCSSObject(css) )
-
-
