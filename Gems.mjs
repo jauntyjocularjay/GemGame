@@ -77,21 +77,23 @@ const IMG =
 }
 
 const css = {
-    html: {
-        'background-color': '#444',
-        'color': '#fff'
-    },
-    '.field': {
-        'width': '512px',
-        'margin': '0 auto'
-    },
-    '.card': {
-        'background-color': '#333',
-        'border-radius': '16px',
-        'box-shadow': '2px 2px 1px #000, inset 1px 1px 1px #fff'
-    },
-    '.gem': {
-        'animation': 'fall 2s ease 0s 1 normal forwards'
+    tag: {
+        html: {
+            'background-color': '#444',
+            color: '#fff'
+        },
+        '.field': {
+            width: '512px',
+            margin: '0 auto'
+        },
+        '.card': {
+            'background-color': '#333',
+            'border-radius': '16px',
+            'box-shadow': '2px 2px 1px #000, inset 1px 1px 1px #fff'
+        },
+        '.gem': {
+            'animation': 'fall 2s ease 0s 1 normal forwards'
+        },
     },
     '@keyframes': {
         'fall': {
@@ -248,4 +250,4 @@ document.body.appendChild(play.field.container.element)
 // blocka.classList.add('gem1')
 // console.log(blocka)
 
-addAdoptedStyleSheet( parseCSSObject(css) )
+// addAdoptedStyleSheet( parseCSSObject(css) )
