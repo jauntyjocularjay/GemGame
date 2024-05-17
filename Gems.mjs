@@ -86,30 +86,31 @@ class Gem {
     static random(spot)
     {
         const i = Math.floor(Math.random() * 8)
+        const clss = ['gem', 'dud', 'fall', flex.flow.default]
         let gem
         if(i === 0){ 
-            gem = new Gem(new Img(IMG.gray, 'gray', ['gem', 'dud', 'gray', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.gray, 'gray', clss.concat(['gray'])))
         }
         else if (i === 1){
-            gem = new Gem(new Img(IMG.red, 'red', ['gem', 'primary', 'red', 'fall', flex.flow.default]))
-        } 
+            gem = new Gem(new Img(IMG.red, 'red', clss.concat(['red'])))
+        }
         else if (i === 2){
-            gem = new Gem(new Img(IMG.orange, 'orange', ['gem', 'secondary', 'fall', 'orange', flex.flow.default]))
+            gem = new Gem(new Img(IMG.orange, 'orange', clss.concat(['orange'])))
         }
         else if (i === 3){ 
-            gem = new Gem(new Img(IMG.yellow, 'yellow', ['gem', 'primary', 'yellow', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.yellow, 'yellow', clss.concat(['yellow'])))
         }
         else if (i === 4){
-            gem = new Gem(new Img(IMG.green, 'green', ['gem', 'secondary', 'green', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.green, 'green', clss.concat(['green'])))
         }
         else if (i === 5){
-            gem = new Gem(new Img(IMG.blue, 'blue', ['gem', 'primary', 'blue', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.blue, 'blue', clss.concat(['blue'])))
         }
         else if (i === 6){
-            gem = new Gem(new Img(IMG.violet, 'violet', ['gem', 'secondary', 'violet', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.violet, 'violet', clss.concat(['violet'])))
         }
         else if (i === 7){
-            gem = new Gem(new Img(IMG.white, 'white', ['gem', 'wild', 'white', 'fall', flex.flow.default]))
+            gem = new Gem(new Img(IMG.white, 'white', clss.concat(['white'])))
         }
         else {
             throw new Error('Gem.random() generated an out-of-bound integer')
