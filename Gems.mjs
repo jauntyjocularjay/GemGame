@@ -64,8 +64,7 @@ import { Grid } from './grid/Grid.mjs'
 
 
 
-
-const img =
+const IMG =
 {
     red: './img/red.svg',
     orange: './img/orange.svg',
@@ -96,28 +95,28 @@ class Gem {
         const i = Math.floor(Math.random() * 8)
         let gem
         if(i === 0){ 
-            gem = new Gem(new Img(img.gray, 'gray', ['gem', 'dud', 'gray', flex.flow.default]))
+            gem = new Gem(new Img(IMG.gray, 'gray', ['gem', 'dud', 'gray', 'fall', flex.flow.default]))
         }
         else if (i === 1){
-            gem = new Gem(new Img(img.red, 'red', ['gem', 'primary', 'red', flex.flow.default]))
+            gem = new Gem(new Img(IMG.red, 'red', ['gem', 'primary', 'red', 'fall', flex.flow.default]))
         } 
         else if (i === 2){
-            gem = new Gem(new Img(img.orange, 'orange', ['gem', 'secondary', 'orange', flex.flow.default]))
+            gem = new Gem(new Img(IMG.orange, 'orange', ['gem', 'secondary', 'fall', 'orange', flex.flow.default]))
         }
         else if (i === 3){ 
-            gem = new Gem(new Img(img.yellow, 'yellow', ['gem', 'primary', 'yellow', flex.flow.default]))
+            gem = new Gem(new Img(IMG.yellow, 'yellow', ['gem', 'primary', 'yellow', 'fall', flex.flow.default]))
         }
         else if (i === 4){
-            gem = new Gem(new Img(img.green, 'green', ['gem', 'secondary', 'green', flex.flow.default]))
+            gem = new Gem(new Img(IMG.green, 'green', ['gem', 'secondary', 'green', 'fall', flex.flow.default]))
         }
         else if (i === 5){
-            gem = new Gem(new Img(img.blue, 'blue', ['gem', 'primary', 'blue', flex.flow.default]))
+            gem = new Gem(new Img(IMG.blue, 'blue', ['gem', 'primary', 'blue', 'fall', flex.flow.default]))
         }
         else if (i === 6){
-            gem = new Gem(new Img(img.violet, 'violet', ['gem', 'secondary', 'violet', flex.flow.default]))
+            gem = new Gem(new Img(IMG.violet, 'violet', ['gem', 'secondary', 'violet', 'fall', flex.flow.default]))
         }
         else if (i === 7){
-            gem = new Gem(new Img(img.white, 'white', ['gem', 'wild', 'white', flex.flow.default]))
+            gem = new Gem(new Img(IMG.white, 'white', ['gem', 'wild', 'white', 'fall', flex.flow.default]))
         }
         else {
             throw new Error('Gem.random() generated an out-of-bound integer')
@@ -132,7 +131,7 @@ class Line
 {
     constructor(int)
     {
-        this.flexBox = new FlexBox(flex.r,['line'], `line${int}`)
+        this.flexBox = new FlexBox(flex.c, ['line'], `line${int}`)
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
@@ -168,7 +167,7 @@ class PlayField {
     {
         this.field = {
             data: new Grid(8,height),
-            container: new Div(['field'], 'field'),
+            container: new FlexBox(flex.r,['field', 'card'], 'field'),
             lines: []
         }
 
@@ -193,5 +192,9 @@ class PlayField {
 const play = new PlayField(8)
 
 document.body.appendChild(play.field.container.element)
+
+// let blocka = document.body.querySelector('#line0').querySelector('#spot-c')
+// blocka.classList.add('gem1')
+// console.log(blocka)
 
 addAdoptedStyleSheet( parseCSSObject(css) )
