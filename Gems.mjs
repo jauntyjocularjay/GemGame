@@ -58,7 +58,7 @@ import {
     // Functions
     getStylesheetByFileName,
     addAdoptedStyleSheet,
-    parseCSSObject
+    JSONCSS,
 } from './vjsc/vanilla.mjs'
 import { Grid } from './grid/Grid.mjs'
 
@@ -74,65 +74,6 @@ const IMG =
     violet: './img/violet.svg',
     white: './img/white.svg',
     gray: './img/gray.svg'
-}
-
-const css = {
-    tag: {
-        html: {
-            'background-color': '#444',
-            color: '#fff'
-        },
-        '.field': {
-            width: '512px',
-            margin: '0 auto'
-        },
-        '.card': {
-            'background-color': '#333',
-            'border-radius': '16px',
-            'box-shadow': '2px 2px 1px #000, inset 1px 1px 1px #fff'
-        },
-        '.gem': {
-            'animation': 'fall 2s ease 0s 1 normal forwards'
-        },
-    },
-    '@keyframes': {
-        'fall': {
-            '0%' : {
-                'animation-timing-function': 'ease-in',
-                opacity: '0',
-                transform: 'translateY(-800%)'
-            },
-            '38%': {
-                'animation-timing-function': 'ease-out',
-                opacity: '1',
-                transform: 'translateY(0)',
-            },
-            '55%' : {
-                'animation-timing-function': 'ease-in',
-                transform: 'translateY(-65px)'
-            },
-            '72%' : {
-                'animation-timing-function': 'ease-out',
-                transform: 'translateY(0)'
-            },
-            '81%' : {
-                'animation-timing-function': 'ease-in',
-                transform: 'translateY(-28px)'
-            },
-            '90%' : {
-                'animation-timing-function': 'ease-out',
-                transform: 'translateY(0)'
-            },
-            '95%' : {
-                'animation-timing-function': 'ease-in',
-                transform: 'translateY(-8px)'
-            },
-            '100%' : {
-                'animation-timing-function': 'ease-out',
-                transform: 'translateY(0)'
-            },
-        }
-    }
 }
 
 class Gem {
@@ -188,8 +129,11 @@ class Line
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
-            const gem = Gem.random(spot[i])
-            this.flexBox.element.appendChild(gem.img.element)
+            setTimeout(() => {
+                const gem = Gem.random(spot[i])
+                this.flexBox.element.appendChild(gem.img.element)
+            }, 10000)
+            
         }
     }
 
@@ -245,9 +189,3 @@ class PlayField {
 const play = new PlayField(8)
 
 document.body.appendChild(play.field.container.element)
-
-// let blocka = document.body.querySelector('#line0').querySelector('#spot-c')
-// blocka.classList.add('gem1')
-// console.log(blocka)
-
-// addAdoptedStyleSheet( parseCSSObject(css) )
