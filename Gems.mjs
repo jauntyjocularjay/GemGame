@@ -129,11 +129,8 @@ class Line
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
-            setTimeout(() => {
-                const gem = Gem.random(spot[i])
-                this.flexBox.element.appendChild(gem.img.element)
-            }, 10000)
-            
+            const gem = Gem.random(spot[i])
+            this.flexBox.element.appendChild(gem.img.element)            
         }
     }
 
