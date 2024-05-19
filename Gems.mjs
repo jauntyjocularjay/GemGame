@@ -60,7 +60,6 @@ import {
     addAdoptedStyleSheet,
     JSONCSS,
 } from './vjsc/vanilla.mjs'
-import { Grid } from './grid/Grid.mjs'
 
 
 
@@ -176,7 +175,6 @@ class PlayField {
     constructor(height)
     {
         this.field = {
-            data: new Grid(8,height),
             container: new FlexBox(flex.r,['field'], 'field'),
             lines: []
         }
