@@ -81,12 +81,14 @@ class Gem {
     constructor(img=null)
     {
         this.img = img
+        this.element = img.element
+        this.selectListener()
     }
 
     static random(spot)
     {
         const i = Math.floor(Math.random() * 8)
-        const clss = ['gem', 'dud', 'fall', flex.flow.default]
+        const clss = ['dud', 'fall']
         let gem
         if(i === 0){ 
             gem = new Gem(new Img(IMG.gray, 'gray', clss.concat(['gray'])))
@@ -119,13 +121,27 @@ class Gem {
         gem.img.element.id = `spot-${spot}`
         return gem
     }
+
+    selectListener()
+    {
+        this.img.addEventListener(event.element.click, () => {
+            const summary = 'select a gem to move'
+            if(this.element.classList.contains('selected')){
+                this.element.classList.remove('selected')
+                // this.element.classList.add('unselected')
+            } else {
+                this.element.classList.add('selected')
+                // this.element.classList.remove('unselected')
+            }
+        })
+    }
 }
 
 class Line
 {
     constructor(int)
     {
-        this.flexBox = new FlexBox(flex.c, ['line'], `line${int}`)
+        this.flexBox = new FlexBox(flex.c, ['line', flex.flow.default], `line${int}`)
         const spot = ['a','b','c','d','e','f','g','h']
         for( let i = 0; i < 8; i++)
         {
@@ -161,7 +177,7 @@ class PlayField {
     {
         this.field = {
             data: new Grid(8,height),
-            container: new FlexBox(flex.r,['field', 'card'], 'field'),
+            container: new FlexBox(flex.r,['field'], 'field'),
             lines: []
         }
 
@@ -186,3 +202,5 @@ class PlayField {
 const play = new PlayField(8)
 
 document.body.appendChild(play.field.container.element)
+
+
