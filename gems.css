@@ -3,28 +3,74 @@ html {
     color: #fff;
 }
 
-.field {
+div.field {
+    min-width: 64px;
+    max-width: 1024px;
+    padding-top: 128px;
     margin: 0 auto;
-    width: 66%;
-    min-width: 600px;
     background-color: #333;
-    border-radius: 16px;
-    padding: 2px;
+    border-radius: 0 0 16px 16px;
     box-shadow: 2px 2px 1px #000, inset 1px 1px 1px #fff;
 }
 
-.gem {
-    animation: fall 2s ease 0s 1 normal forwards;
+div.line {
+    min-width: 8px;
+    max-width: 128px;
 }
 
-img.unselected {
-    border: rgba(0, 0, 0, 0);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 1), inset 1px 1px 1px rgba(0, 0, 0, 1);
+img.gem {
+    animation: fall 2s ease 0s 1 normal forwards;
+    margin: 2px;
 }
 
 img.selected {
     border-radius: 16px;
+    background-color: #444;
     box-shadow: 2px 2px 2px black, inset 1px 1px 1px white;
+}
+
+@media screen and (width < 1024px) {
+    div.field {
+        width: 512px;
+        padding-top: 64px;
+    }
+
+    div.line {
+        width: 64px;
+    }
+}
+
+@media screen and (width < 544px) {
+    div.field {
+        width: 320px;
+        padding-top: 32px;
+    }
+
+    div.line {
+        width: 32px;
+    }
+}
+
+@media screen and (width < 288px){
+    div.field {
+        width: 128px;
+        padding-top: 16px;
+    }
+
+    div.line {
+        width: 16px;
+    }
+}
+
+@media screen and (width < 160px) {
+    div.field {
+        width: 64px;
+        padding-top: 8px;
+    }
+
+    div.line {
+        width: 8px;
+    }
 }
 
 @keyframes fall {
@@ -69,4 +115,9 @@ img.selected {
         animation-timing-function: ease-out;
         transform: translateY(0)
     }
+}
+
+@keyframes matched {
+    from { opacity: 1;}
+    to { opacity: 0;}
 }
