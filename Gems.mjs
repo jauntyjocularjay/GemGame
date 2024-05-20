@@ -61,7 +61,63 @@ import {
     JSONCSS,
 } from './vjsc/vanilla.mjs'
 
+const kframe = {
+    fall: 'fall'
+}
 
+const colorHex = {
+    gray: '#444',
+    red: '#d44',
+    orange: '#f60',
+    yellow: '#da4',
+    green: '#4d4',
+    blue: '#33a',
+    violet: '#a4d',
+    white: '#fff'
+}
+
+const gem = {
+    gray: {
+        color: 'gray',
+        name: 'hematite',
+        type: 'dud',
+    },
+    red: {
+        color: 'red',
+        name: 'ruby',
+        type: 'primary',
+    },
+    orange: {
+        color: 'orange',
+        name: 'citrine',
+        type: 'secondary',
+    },
+    yellow: {
+        color: 'yellow',
+        name: 'topaz',
+        type: 'primary',
+    },
+    green: {
+        color: 'green',
+        name: 'emerald',
+        type: 'secondary',
+    },
+    blue: {
+        color: 'blue',
+        name: 'sapphire',
+        type: 'primary',
+    },
+    violet: {
+        color: 'violet',
+        name: 'amethyst',
+        type: 'secondary',
+    },
+    white: {
+        color: 'white',
+        name: 'diamond',
+        type: 'wild',
+    },
+}
 
 const IMG =
 {
@@ -76,6 +132,7 @@ const IMG =
 }
 
 class Gem {
+    type = ''
 
     constructor(img=null)
     {
@@ -86,35 +143,35 @@ class Gem {
 
     static random(spot)
     {
-        const i = Math.floor(Math.random() * 8)
-        const clss = ['dud', 'fall']
+        const i = Math.floor(Math.random() * 19)
         let gem
-        if(i === 0){ 
-            gem = new Gem(new Img(IMG.gray, 'gray', clss.concat(['gray'])))
+
+        if(i >=  0 && i <=  1){ 
+            gem = new Gray(spot)
         }
-        else if (i === 1){
-            gem = new Gem(new Img(IMG.red, 'red', clss.concat(['red'])))
+        else if (i >=  2 && i <=  4){
+            gem = new Red(spot)
         }
-        else if (i === 2){
-            gem = new Gem(new Img(IMG.orange, 'orange', clss.concat(['orange'])))
+        else if (i >=  5 && i <=  6){
+            gem = new Orange(spot)
         }
-        else if (i === 3){ 
-            gem = new Gem(new Img(IMG.yellow, 'yellow', clss.concat(['yellow'])))
+        else if (i >=  7 && i <= 10){ 
+            gem = new Yellow(spot)
         }
-        else if (i === 4){
-            gem = new Gem(new Img(IMG.green, 'green', clss.concat(['green'])))
+        else if (i >= 11 && i <= 12){
+            gem = new Green(spot)
         }
-        else if (i === 5){
-            gem = new Gem(new Img(IMG.blue, 'blue', clss.concat(['blue'])))
+        else if (i >= 13 && i <= 15){
+            gem = new Blue(spot)
         }
-        else if (i === 6){
-            gem = new Gem(new Img(IMG.violet, 'violet', clss.concat(['violet'])))
+        else if (i >= 16 && i <= 17){
+            gem = new Violet(spot)
         }
-        else if (i === 7){
-            gem = new Gem(new Img(IMG.white, 'white', clss.concat(['white'])))
+        else if (i >= 18 && i <= 18){
+            gem = new White(spot)
         }
         else {
-            throw new Error('Gem.random() generated an out-of-bound integer')
+            throw new Error(`Gem.random() generated an out-of-bound integer: ${i}`)
         }
 
         gem.img.element.id = `spot-${spot}`
@@ -127,14 +184,90 @@ class Gem {
             const summary = 'select a gem to move'
             if(this.element.classList.contains('selected')){
                 this.element.classList.remove('selected')
-                // this.element.classList.add('unselected')
-            } else {
+                selected--
+            } else if(!this.element.classList.contains('selected') && selected < 2) {
                 this.element.classList.add('selected')
-                // this.element.classList.remove('unselected')
+                this.element.classList.add('matched')
+                selected++
             }
         })
     }
 }
+
+class Gray extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.gray, 'gray gem', ['gem', kframe.fall, gem.gray.color], spot))
+        this.type = 'dud'
+    }
+}
+
+class Red extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.red, 'red gem', ['gem', kframe.fall, gem.red.color], spot))
+        this.type = 'primary'
+    }
+}
+
+class Orange extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.orange, 'orange gem', ['gem', kframe.fall, gem.orange.color], spot))
+        this.type = 'secondary'
+    }
+}
+
+class Yellow extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.yellow, 'yellow gem', ['gem', kframe.fall, gem.yellow.color], spot))
+        this.type = 'primary'
+    }
+}
+
+class Green extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.green, 'green gem', ['gem', kframe.fall, gem.green.color], spot))
+        this.type = 'secondary'
+    }
+}
+
+class Blue extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.blue, 'blue gem', ['gem', kframe.fall, gem.yellow.color], spot))
+        this.type = 'primary'
+    }
+}
+
+class Violet extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.violet, 'violet gem', ['gem', kframe.fall, gem.yellow.color], spot))
+        this.type = 'secondary'
+    }
+}
+
+class White extends Gem {
+
+    constructor(spot)
+    {
+        super(new Img(IMG.white, 'white gem', ['gem', kframe.fall, gem.yellow.color], spot))
+        this.type = 'wild'
+    }
+}
+
+
+
 
 class Line
 {
@@ -175,6 +308,7 @@ class PlayField {
     constructor(height)
     {
         this.field = {
+            data: null,
             container: new FlexBox(flex.r,['field'], 'field'),
             lines: []
         }
@@ -198,6 +332,7 @@ class PlayField {
 }
 
 const play = new PlayField(8)
+let selected = 0
 
 document.body.appendChild(play.field.container.element)
 
