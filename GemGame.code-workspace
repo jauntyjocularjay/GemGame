@@ -2,15 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "grid"
-		},
-		{
-			"path": "vjsc"
-		},
-		{
-			"path": "grid/Enumjs"
 		}
 	],
 	"settings": {}
