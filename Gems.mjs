@@ -10,7 +10,6 @@ import {
     StyleSheet,
     Listener,
         ListenerOnLoad, 
-    // FlexBoxClass,
 
     // Classables
     // // Containers
@@ -60,6 +59,7 @@ import {
     addAdoptedStyleSheet,
     JSONCSS,
 } from './vjsc/vanilla.mjs'
+import { Grid } from './grid/Grid.mjs'
 
 const kframe = {
     fall: 'fall'
@@ -306,7 +306,7 @@ class PlayField {
     constructor(height)
     {
         this.field = {
-            data: null,
+            data: new Grid(height, 8),
             container: new FlexBox(flex.r,['field'], 'field'),
             lines: []
         }
