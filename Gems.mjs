@@ -195,7 +195,7 @@ class Gem {
 }
 
 class Gray extends Gem {
-    type = 'dud'
+    type = gem.gray.type
 
     constructor(spot)
     {
@@ -204,7 +204,7 @@ class Gray extends Gem {
 }
 
 class Red extends Gem {
-    type = 'primary'
+    type = gem.red.type
 
     constructor(spot)
     {
@@ -213,7 +213,7 @@ class Red extends Gem {
 }
 
 class Orange extends Gem {
-    type = 'secondary'
+    type = gem.orange.type
 
     constructor(spot)
     {
@@ -222,7 +222,7 @@ class Orange extends Gem {
 }
 
 class Yellow extends Gem {
-    type = 'primary'
+    type = gem.yellow.type
 
     constructor(spot)
     {
@@ -231,7 +231,7 @@ class Yellow extends Gem {
 }
 
 class Green extends Gem {
-    type = 'secondary'
+    type = gem.yellow.type
 
     constructor(spot)
     {
@@ -240,7 +240,7 @@ class Green extends Gem {
 }
 
 class Blue extends Gem {
-    type = 'primary'
+    type = gem.blue.type
 
     constructor(spot)
     {
@@ -249,7 +249,7 @@ class Blue extends Gem {
 }
 
 class Violet extends Gem {
-    type = 'secondary'
+    type = gem.violet.type
 
     constructor(spot)
     {
@@ -259,7 +259,7 @@ class Violet extends Gem {
 }
 
 class White extends Gem {
-    type = 'wild'
+    type = gem.white.type
 
     constructor(spot)
     {
