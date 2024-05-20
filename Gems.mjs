@@ -195,79 +195,77 @@ class Gem {
 }
 
 class Gray extends Gem {
+    type = 'dud'
 
     constructor(spot)
     {
         super(new Img(IMG.gray, 'gray gem', ['gem', kframe.fall, gem.gray.color], spot))
-        this.type = 'dud'
     }
 }
 
 class Red extends Gem {
+    type = 'primary'
 
     constructor(spot)
     {
         super(new Img(IMG.red, 'red gem', ['gem', kframe.fall, gem.red.color], spot))
-        this.type = 'primary'
     }
 }
 
 class Orange extends Gem {
+    type = 'secondary'
 
     constructor(spot)
     {
         super(new Img(IMG.orange, 'orange gem', ['gem', kframe.fall, gem.orange.color], spot))
-        this.type = 'secondary'
     }
 }
 
 class Yellow extends Gem {
+    type = 'primary'
 
     constructor(spot)
     {
         super(new Img(IMG.yellow, 'yellow gem', ['gem', kframe.fall, gem.yellow.color], spot))
-        this.type = 'primary'
     }
 }
 
 class Green extends Gem {
+    type = 'secondary'
 
     constructor(spot)
     {
         super(new Img(IMG.green, 'green gem', ['gem', kframe.fall, gem.green.color], spot))
-        this.type = 'secondary'
     }
 }
 
 class Blue extends Gem {
+    type = 'primary'
 
     constructor(spot)
     {
         super(new Img(IMG.blue, 'blue gem', ['gem', kframe.fall, gem.yellow.color], spot))
-        this.type = 'primary'
     }
 }
 
 class Violet extends Gem {
+    type = 'secondary'
 
     constructor(spot)
     {
         super(new Img(IMG.violet, 'violet gem', ['gem', kframe.fall, gem.yellow.color], spot))
-        this.type = 'secondary'
+        
     }
 }
 
 class White extends Gem {
+    type = 'wild'
 
     constructor(spot)
     {
         super(new Img(IMG.white, 'white gem', ['gem', kframe.fall, gem.yellow.color], spot))
-        this.type = 'wild'
     }
 }
-
-
-
 
 class Line
 {

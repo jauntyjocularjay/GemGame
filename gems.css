@@ -3,17 +3,22 @@ html {
     color: #fff;
 }
 
-.field {
+div.field {
+    min-width: 64px;
+    max-width: 1024px;
+    padding-top: 128px;
     margin: 0 auto;
-    width: 66%;
-    min-width: 600px;
     background-color: #333;
-    padding-top: 16px;
     border-radius: 0 0 16px 16px;
     box-shadow: 2px 2px 1px #000, inset 1px 1px 1px #fff;
 }
 
-.gem {
+div.line {
+    min-width: 8px;
+    max-width: 128px;
+}
+
+img.gem {
     animation: fall 2s ease 0s 1 normal forwards;
     margin: 2px;
 }
@@ -24,11 +29,54 @@ img.selected {
     box-shadow: 2px 2px 2px black, inset 1px 1px 1px white;
 }
 
+@media screen and (width < 1024px) {
+    div.field {
+        width: 512px;
+        padding-top: 64px;
+    }
+
+    div.line {
+        width: 64px;
+    }
+}
+
+@media screen and (width < 544px) {
+    div.field {
+        width: 320px;
+        padding-top: 32px;
+    }
+
+    div.line {
+        width: 32px;
+    }
+}
+
+@media screen and (width < 288px){
+    div.field {
+        width: 128px;
+        padding-top: 16px;
+    }
+
+    div.line {
+        width: 16px;
+    }
+}
+
+@media screen and (width < 160px) {
+    div.field {
+        width: 64px;
+        padding-top: 8px;
+    }
+
+    div.line {
+        width: 8px;
+    }
+}
+
 @keyframes fall {
     00% {
         animation-timing-function: ease-in;
         opacity: 0;
-        transform: translateY();
         transform: translateY(-800%);
     }
 
@@ -70,6 +118,6 @@ img.selected {
 }
 
 @keyframes matched {
-    from {trasnform: scale(1);}
-    to {transform: scale(0.1);}
+    from { opacity: 1;}
+    to { opacity: 0;}
 }
