@@ -305,33 +305,31 @@ class Line
 class PlayField {
     constructor(height)
     {
-        this.field = {
-            data: new Grid(height, 8),
-            container: new FlexBox(flex.r,['field'], 'field'),
-            lines: []
-        }
+        this.data = new Grid(height, 8),
+        this.container = new FlexBox(flex.r,['field'], 'field'),
+        this.lines = []
 
         for(let i = 0; i < height; i++)
         {
-            this.field.lines.push(new Line(i))
-            this.field.container.element.appendChild(this.field.lines[i].flexBox.element)
+            this.lines.push(new Line(i))
+            this.container.element.appendChild(this.lines[i].flexBox.element)
         }
     }
 
     getLine(int)
     {
-        return this.field.lines[int]
+        return this.lines[int]
     }
 
     getSpot(int, char)
     {
-        return this.field.lines[int].getSpot(char)
+        return this.lines[int].getSpot(char)
     }
 }
 
 const play = new PlayField(8)
 let selected = 0
 
-document.body.appendChild(play.field.container.element)
+document.body.appendChild(play.container.element)
 
 
