@@ -76,7 +76,8 @@ const colorHex = {
     white: '#fff'
 }
 
-const gem = {
+const gem = // Contains gem names, colors, and types
+{
     gray: {
         color: 'gray',
         name: 'hematite',
@@ -119,7 +120,10 @@ const gem = {
     },
 }
 
-const IMG =
+const IMG = // contains the string paths to the gem images
+/**
+ * @constant {object} IMG contains the string paths to the gem images
+ */
 {
     red: './img/red.svg',
     orange: './img/orange.svg',
@@ -143,7 +147,7 @@ class Gem {
 
     static random(spot)
     {
-        const i = Math.floor(Math.random() * 19)
+        const i = Math.floor(Math.random() * 18)
         let gem
 
         if(i >=  0 && i <=  1){ 
@@ -166,9 +170,6 @@ class Gem {
         }
         else if (i >= 16 && i <= 17){
             gem = new Violet(spot)
-        }
-        else if (i >= 18 && i <= 18){
-            gem = new White(spot)
         }
         else {
             throw new Error(`Gem.random() generated an out-of-bound integer: ${i}`)
