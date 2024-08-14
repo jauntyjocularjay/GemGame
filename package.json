@@ -9,7 +9,7 @@
     "beta2master": "bash sh/gitBeta2Master.sh",
     "dev2master": "bash sh/gitDev2Master.sh",
     "dev": "git submodule update --init --recursive",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test --exit"
   },
   "repository": {
     "type": "git",
