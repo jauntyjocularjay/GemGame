@@ -86,7 +86,7 @@ const gem = // Contains gem names, colors, and types
     red: {
         color: 'red',
         name: 'ruby',
-        type: 'primary',
+        type: 'primary'
     },
     orange: {
         color: 'orange',
@@ -193,6 +193,8 @@ class Gem {
             }
         })
     }
+
+    complements = 'Stub: Gem.cannotTouch() is not implemented for this gem'
 }
 
 class Gray extends Gem {
@@ -202,6 +204,8 @@ class Gray extends Gem {
     {
         super(new Img(IMG.gray, 'gray gem', ['gem', kframe.fall, gem.gray.color], spot))
     }
+
+    complements = []
 }
 
 class Red extends Gem {
@@ -211,6 +215,11 @@ class Red extends Gem {
     {
         super(new Img(IMG.red, 'red gem', ['gem', kframe.fall, gem.red.color], spot))
     }
+
+    complements = [
+        gem.violet.color,
+        gem.orange.color
+    ]
 }
 
 class Orange extends Gem {
@@ -220,6 +229,11 @@ class Orange extends Gem {
     {
         super(new Img(IMG.orange, 'orange gem', ['gem', kframe.fall, gem.orange.color], spot))
     }
+
+    complements = [
+        gem.red.color,
+        gem.yellow.color
+    ]
 }
 
 class Yellow extends Gem {
@@ -229,6 +243,11 @@ class Yellow extends Gem {
     {
         super(new Img(IMG.yellow, 'yellow gem', ['gem', kframe.fall, gem.yellow.color], spot))
     }
+
+    complements = [
+        gem.orange.color,
+        gem.green.color
+    ]
 }
 
 class Green extends Gem {
@@ -238,6 +257,11 @@ class Green extends Gem {
     {
         super(new Img(IMG.green, 'green gem', ['gem', kframe.fall, gem.green.color], spot))
     }
+
+    complements = [
+        gem.yellow.color,
+        gem.blue.color
+    ]
 }
 
 class Blue extends Gem {
@@ -247,6 +271,11 @@ class Blue extends Gem {
     {
         super(new Img(IMG.blue, 'blue gem', ['gem', kframe.fall, gem.yellow.color], spot))
     }
+
+    complements = [
+        gem.green.color,
+        gem.violet.color
+    ]
 }
 
 class Violet extends Gem {
@@ -255,8 +284,12 @@ class Violet extends Gem {
     constructor(spot)
     {
         super(new Img(IMG.violet, 'violet gem', ['gem', kframe.fall, gem.yellow.color], spot))
-        
     }
+
+    complements = [
+        gem.blue.color,
+        gem.red.color
+    ]
 }
 
 class White extends Gem {
@@ -266,6 +299,16 @@ class White extends Gem {
     {
         super(new Img(IMG.white, 'white gem', ['gem', kframe.fall, gem.yellow.color], spot))
     }
+
+    complements = [
+        gem.red.color,
+        gem.orange.color,
+        gem.yellow.color,
+        gem.green.color,
+        gem.blue.color,
+        gem.violet.color,
+        gem.gray.color
+    ]
 }
 
 class Line
