@@ -147,29 +147,29 @@ class Gem {
 
     static random(spot)
     {
-        const i = Math.floor(Math.random() * 18)
+        const i = Math.floor(Math.random() * 53)
         let gem
 
-        if(i >=  0 && i <=  1){ 
-            gem = new Gray(spot)
-        }
-        else if (i >=  2 && i <=  4){
+        if (i >=  0 && i <= 8){
             gem = new Red(spot)
         }
-        else if (i >=  5 && i <=  6){
+        else if (i >=  9 && i <=  16){
             gem = new Orange(spot)
         }
-        else if (i >=  7 && i <= 10){ 
+        else if (i >=  17 && i <= 24){ 
             gem = new Yellow(spot)
         }
-        else if (i >= 11 && i <= 12){
+        else if (i >= 25 && i <= 32){
             gem = new Green(spot)
         }
-        else if (i >= 13 && i <= 15){
+        else if (i >= 33 && i <= 40){
             gem = new Blue(spot)
         }
-        else if (i >= 16 && i <= 17){
+        else if (i >= 40 && i <= 48){
             gem = new Violet(spot)
+        }
+        else if(i >=  49 && i <=  53){ 
+            gem = new Gray(spot)
         }
         else {
             throw new Error(`Gem.random() generated an out-of-bound integer: ${i}`)
