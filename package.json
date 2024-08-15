@@ -8,8 +8,8 @@
     "dev2beta": "bash sh/gitDev2Beta.sh",
     "beta2master": "bash sh/gitBeta2Master.sh",
     "dev2master": "bash sh/gitDev2Master.sh",
-    "submodule": "git submodule update --init --recursive",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "git submodule update --init --recursive",
+    "test": "mocha test --exit"
   },
   "repository": {
     "type": "git",

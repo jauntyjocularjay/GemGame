@@ -1,0 +1,9 @@
+[submodule "git"]
+	path = git
+	url = https://github.com/jauntyjocularjay/kwikgit.git
+[submodule "module/vjsc"]
+	path = module/vjsc
+	url = https://github.com/jauntyjocularjay/vanillajscomponents.git
+[submodule "module/grid"]
+	path = module/grid
+	url = https://github.com/jauntyjocularjay/opengamegrid.git

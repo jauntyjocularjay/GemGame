@@ -117,6 +117,30 @@ img.selected {
     }
 }
 
+@keyframes up {
+    from {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes down {
+    from {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes left {
+    from {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes right {
+    from {
+        transform: translateX(100%);
+    }
+}
+
 @keyframes matched {
     from { opacity: 1;}
     to { opacity: 0;}
