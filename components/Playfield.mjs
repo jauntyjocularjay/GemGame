@@ -72,7 +72,6 @@ import {
     JSONCSS,
 } from '../module/vjsc/vanilla.mjs'
 
-
 class Line
 // A column on the play field
 {

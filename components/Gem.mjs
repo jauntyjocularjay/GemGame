@@ -150,6 +150,9 @@ class Gem {
     }
 
     static random(spot)
+    /**
+     * @static @method random(spot) generates a random gem at the given spot
+     */
     {
         const i = Math.floor(Math.random() * 53)
         let gem
@@ -182,6 +185,15 @@ class Gem {
         gem.img.element.id = `spot-${spot}`
         return gem
     }
+
+    // static random(spot, neighbors=[])
+    // /**
+    //  * @static @method random(spot) generates a random gem at the given spot
+    //  *      and checks to make sure the neighbors are not of complementing colors
+    //  */
+    // {
+
+    // }
 
     selectListener()
     {
