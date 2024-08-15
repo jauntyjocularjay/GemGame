@@ -64,6 +64,8 @@ const kframe = {
     fall: 'fall'
 }
 
+let selected = 0
+
 const colorHex = {
     gray: '#444',
     red: '#d44',
