@@ -1,4 +1,4 @@
-import { Grid } from '../grid/Grid.mjs'
+import { Grid } from '../module/grid/Grid.mjs'
 import {
     Gem,
     Gray,
@@ -18,7 +18,7 @@ import {
     unit,
 
     // Base Classes
-    Selection,
+    OptionSelection,
     StyleSheet,
     Listener,
         ListenerOnLoad, 
