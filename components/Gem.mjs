@@ -61,7 +61,12 @@ import {
 } from '../module/vjsc/vanilla.mjs'
 
 const kframe = {
-    fall: 'fall'
+    fall: 'fall',
+    matched: 'matched',
+    up: 'up',
+    down: 'down',
+    left: 'left',
+    right: 'right'
 }
 
 let selected = 0
