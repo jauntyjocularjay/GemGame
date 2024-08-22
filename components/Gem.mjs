@@ -9,14 +9,14 @@ import {
     OptionSelection,
     StyleSheet,
     Listener,
-        ListenerOnLoad, 
+    ListenerOnLoad,
 
     // Classables
     // // Containers
     Img,
     Div,
-        DivBtn,
-        FlexBox,
+    DivBtn,
+    FlexBox,
     Figure,
     Form,
     Label,
@@ -50,7 +50,7 @@ import {
     Sub,
     Sup,
     Span,
-        Text,
+    Text,
     Code,
     Pre,
 
@@ -66,7 +66,7 @@ const kframe = {
     up: 'up',
     down: 'down',
     left: 'left',
-    right: 'right'
+    right: 'right',
 }
 
 let selected = 0
@@ -79,10 +79,11 @@ const colorHex = {
     green: '#4d4',
     blue: '#33a',
     violet: '#a4d',
-    white: '#fff'
+    white: '#fff',
 }
 
-const gem = // Contains gem names, colors, and types
+const gem =
+    // Contains gem names, colors, and types
 {
     gray: {
         color: 'gray',
@@ -92,7 +93,7 @@ const gem = // Contains gem names, colors, and types
     red: {
         color: 'red',
         name: 'ruby',
-        type: 'primary'
+        type: 'primary',
     },
     orange: {
         color: 'orange',
@@ -123,62 +124,65 @@ const gem = // Contains gem names, colors, and types
         color: 'white',
         name: 'diamond',
         type: 'wild',
-    },
+    }
 }
 
-const IMG = // contains the string paths to the gem images
-/**
- * @constant {object} IMG contains the string paths to the gem images
- */
-{
-    red: './img/red.svg',
-    orange: './img/orange.svg',
-    yellow: './img/yellow.svg',
-    green: './img/green.svg',
-    blue: './img/blue.svg',
-    violet: './img/violet.svg',
-    white: './img/white.svg',
-    gray: './img/gray.svg'
-}
-
-class Gem {
-    constructor(img=null)
+const IMG =
+    // contains the string paths to the gem images
+    /**
+     * @constant {object} IMG contains the string paths to the gem images
+     */
     {
+        red: './img/red.svg',
+        orange: './img/orange.svg',
+        yellow: './img/yellow.svg',
+        green: './img/green.svg',
+        blue: './img/blue.svg',
+        violet: './img/violet.svg',
+        white: './img/white.svg',
+        gray: './img/gray.svg',
+}
+
+class GEM
+{
+    static RED = Symbol('red')
+    static ORANGE = Symbol( 'orange')
+    static YELLOW = Symbol( 'yellow')
+    static GREEN = Symbol( 'green')
+    static BLUE = Symbol( 'blue')
+    static VIOLET = Symbol( 'violet')
+}
+
+class Gem
+{
+    constructor(img = null) {
         this.img = img
         this.element = img.element
         this.selectListener()
     }
 
-    static random(spot)
-    /**
+    static random(spot) /**
      * @static @method random(spot) generates a random gem at the given spot
      */
     {
         const i = Math.floor(Math.random() * 53)
         let gem
 
-        if (i >=  0 && i <= 8){
+        if (i >= 0 && i <= 8) {
             gem = new Red(spot)
-        }
-        else if (i >=  9 && i <=  16){
+        } else if (i >= 9 && i <= 16) {
             gem = new Orange(spot)
-        }
-        else if (i >=  17 && i <= 24){ 
+        } else if (i >= 17 && i <= 24) {
             gem = new Yellow(spot)
-        }
-        else if (i >= 25 && i <= 32){
+        } else if (i >= 25 && i <= 32) {
             gem = new Green(spot)
-        }
-        else if (i >= 33 && i <= 40){
+        } else if (i >= 33 && i <= 40) {
             gem = new Blue(spot)
-        }
-        else if (i >= 40 && i <= 48){
+        } else if (i >= 40 && i <= 48) {
             gem = new Violet(spot)
-        }
-        else if(i >=  49 && i <=  53){ 
+        } else if (i >= 49 && i <= 53) {
             gem = new Gray(spot)
-        }
-        else {
+        } else {
             throw new Error(`Gem.random() generated an out-of-bound integer: ${i}`)
         }
 
@@ -195,14 +199,16 @@ class Gem {
 
     // }
 
-    selectListener()
-    {
+    selectListener() {
         this.img.element.addEventListener(event.element.click, () => {
             const summary = 'select a gem to move'
-            if(this.element.classList.contains('selected')){
+            if (this.element.classList.contains('selected')) {
                 this.element.classList.remove('selected')
                 selected--
-            } else if(!this.element.classList.contains('selected') && selected < 2) {
+            } else if (
+                !this.element.classList.contains('selected') &&
+                selected < 2
+            ) {
                 this.element.classList.add('selected')
                 this.element.classList.add('matched')
                 selected++
@@ -216,118 +222,164 @@ class Gem {
 class Gray extends Gem {
     type = gem.gray.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.gray, 'gray gem', ['gem', kframe.fall, gem.gray.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.gray,
+                'gray gem',
+                ['gem', kframe.fall, gem.gray.color],
+                spot
+            )
+        )
     }
 
-    complements = [
-        gem.white.color
-    ]
+    complements = [gem.white.color]
 }
 
 class Red extends Gem {
     type = gem.red.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.red, 'red gem', ['gem', kframe.fall, gem.red.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.red,
+                'red gem',
+                ['gem', kframe.fall, gem.red.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.red.color,
         gem.violet.color,
         gem.orange.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class Orange extends Gem {
     type = gem.orange.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.orange, 'orange gem', ['gem', kframe.fall, gem.orange.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.orange,
+                'orange gem',
+                ['gem', kframe.fall, gem.orange.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.orange.color,
         gem.red.color,
         gem.yellow.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class Yellow extends Gem {
     type = gem.yellow.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.yellow, 'yellow gem', ['gem', kframe.fall, gem.yellow.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.yellow,
+                'yellow gem',
+                ['gem', kframe.fall, gem.yellow.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.yellow.color,
         gem.orange.color,
         gem.green.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class Green extends Gem {
     type = gem.green.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.green, 'green gem', ['gem', kframe.fall, gem.green.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.green,
+                'green gem',
+                ['gem', kframe.fall, gem.green.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.green.color,
         gem.yellow.color,
         gem.blue.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class Blue extends Gem {
     type = gem.blue.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.blue, 'blue gem', ['gem', kframe.fall, gem.yellow.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.blue,
+                'blue gem',
+                ['gem', kframe.fall, gem.yellow.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.blue.color,
         gem.green.color,
         gem.violet.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class Violet extends Gem {
     type = gem.violet.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.violet, 'violet gem', ['gem', kframe.fall, gem.yellow.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.violet,
+                'violet gem',
+                ['gem', kframe.fall, gem.yellow.color],
+                spot
+            )
+        )
     }
 
     complements = [
         gem.violet.color,
         gem.blue.color,
         gem.red.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
 class White extends Gem {
     type = gem.white.type
 
-    constructor(spot)
-    {
-        super(new Img(IMG.white, 'white gem', ['gem', kframe.fall, gem.yellow.color], spot))
+    constructor(spot) {
+        super(
+            new Img(
+                IMG.white,
+                'white gem',
+                ['gem', kframe.fall, gem.yellow.color],
+                spot
+            )
+        )
     }
 
     complements = [
@@ -338,18 +390,8 @@ class White extends Gem {
         gem.blue.color,
         gem.violet.color,
         gem.gray.color,
-        gem.white.color
+        gem.white.color,
     ]
 }
 
-export {
-    Gem,
-    Gray,
-    Red,
-    Orange,
-    Yellow,
-    Green,
-    Blue,
-    Violet,
-    White
-}
+export { Gem, Gray, Red, Orange, Yellow, Green, Blue, Violet, White }

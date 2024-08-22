@@ -127,9 +127,15 @@ class PlayField {
         return this.lines[int]
     }
 
-    getSpot(int, char)
+    getSpot(lineNumber, columnChar)
     {
-        return this.lines[int].getSpot(char)
+        return this.lines[lineNumber].getSpot(columnChar)
+    }
+
+    compareGems(line, row)
+    {
+        const down = [this.getSpot(line, row)]
+        return ''
     }
 }
 
