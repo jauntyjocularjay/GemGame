@@ -152,6 +152,8 @@ class Gem {
         violet: [41, 48],
         gray: [49, 53],
     }
+    static complements = null // complements = these gems, when matched with their supplements, turn into the color that remains.
+    static supplements = null // supplements = these gems, when matched with their complements, disappear on match
 
     constructor(img = null) {
         this.img = img
@@ -159,7 +161,8 @@ class Gem {
         this.selectListener()
     }
 
-    static random(spot) /**
+    static random(spot)
+    /**
      * @static @method random(spot) generates a random gem at the given spot
      */
     {
@@ -225,11 +228,11 @@ class Gem {
         })
     }
 
-    supplements = 'Stub: Gem.complements() is not implemented for this gem'
 }
 
 class Gray extends Gem {
-    type = gem.gray.type
+    static type = gem.gray.type
+    static supplements = [gem.white.color]
 
     constructor(spot) {
         super(
@@ -240,13 +243,18 @@ class Gray extends Gem {
                 spot
             )
         )
-    }
-
-    supplements = [gem.white.color]
+    }    
 }
 
 class Red extends Gem {
-    type = gem.red.type
+    static type = gem.red.type
+    
+    static supplements = [
+        gem.red.color,
+        gem.violet.color,
+        gem.orange.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -259,16 +267,16 @@ class Red extends Gem {
         )
     }
 
-    supplements = [
-        gem.red.color,
-        gem.violet.color,
-        gem.orange.color,
-        gem.white.color,
-    ]
 }
 
 class Orange extends Gem {
-    type = gem.orange.type
+    static type = gem.orange.type
+    static supplements = [
+        gem.orange.color,
+        gem.red.color,
+        gem.yellow.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -280,17 +288,16 @@ class Orange extends Gem {
             )
         )
     }
-
-    supplements = [
-        gem.orange.color,
-        gem.red.color,
-        gem.yellow.color,
-        gem.white.color,
-    ]
 }
 
 class Yellow extends Gem {
-    type = gem.yellow.type
+    static type = gem.yellow.type
+    static supplements = [
+        gem.yellow.color,
+        gem.orange.color,
+        gem.green.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -303,16 +310,16 @@ class Yellow extends Gem {
         )
     }
 
-    supplements = [
-        gem.yellow.color,
-        gem.orange.color,
-        gem.green.color,
-        gem.white.color,
-    ]
 }
 
 class Green extends Gem {
-    type = gem.green.type
+    static type = gem.green.type
+    static supplements = [
+        gem.green.color,
+        gem.yellow.color,
+        gem.blue.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -325,16 +332,16 @@ class Green extends Gem {
         )
     }
 
-    supplements = [
-        gem.green.color,
-        gem.yellow.color,
-        gem.blue.color,
-        gem.white.color,
-    ]
 }
 
 class Blue extends Gem {
-    type = gem.blue.type
+    static type = gem.blue.type
+    static supplements = [
+        gem.blue.color,
+        gem.green.color,
+        gem.violet.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -347,16 +354,16 @@ class Blue extends Gem {
         )
     }
 
-    supplements = [
-        gem.blue.color,
-        gem.green.color,
-        gem.violet.color,
-        gem.white.color,
-    ]
 }
 
 class Violet extends Gem {
-    type = gem.violet.type
+    static type = gem.violet.type
+    static supplements = [
+        gem.violet.color,
+        gem.blue.color,
+        gem.red.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -368,17 +375,20 @@ class Violet extends Gem {
             )
         )
     }
-
-    supplements = [
-        gem.violet.color,
-        gem.blue.color,
-        gem.red.color,
-        gem.white.color,
-    ]
 }
 
 class White extends Gem {
-    type = gem.white.type
+    static type = gem.white.type
+    static supplements = [
+        gem.red.color,
+        gem.orange.color,
+        gem.yellow.color,
+        gem.green.color,
+        gem.blue.color,
+        gem.violet.color,
+        gem.gray.color,
+        gem.white.color,
+    ]
 
     constructor(spot) {
         super(
@@ -390,17 +400,6 @@ class White extends Gem {
             )
         )
     }
-
-    supplements = [
-        gem.red.color,
-        gem.orange.color,
-        gem.yellow.color,
-        gem.green.color,
-        gem.blue.color,
-        gem.violet.color,
-        gem.gray.color,
-        gem.white.color,
-    ]
 }
 
 export { Gem, Gray, Red, Orange, Yellow, Green, Blue, Violet, White }
