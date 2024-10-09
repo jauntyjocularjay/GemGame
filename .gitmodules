@@ -7,3 +7,6 @@
 [submodule "module/grid"]
 	path = module/grid
 	url = https://github.com/jauntyjocularjay/opengamegrid.git
+[submodule "module/jestr"]
+	path = module/jestr
+	url = https://github.com/jauntyjocularjay/Jestr

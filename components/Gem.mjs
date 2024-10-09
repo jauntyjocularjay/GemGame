@@ -228,10 +228,25 @@ class Gem {
         })
     }
 
+    isMatch(targetGem = new Gem())
+    {
+        if(this.complements)
+        {
+            return this.complements.indexOf(targetGem.type.color) !== -1
+        }
+        else if (this.supplements)
+        {
+            return this.supplements.indexOf(targetGem.type.color) !== -1
+        }
+        else
+        {
+            throw new TypeError(`Gem does not have type. Check your subject gem.`);
+        }
+    }
 }
 
 class Gray extends Gem {
-    static type = gem.gray.type
+    static type = gem.gray
     static supplements = [gem.white.color]
 
     constructor(spot) {
@@ -247,7 +262,7 @@ class Gray extends Gem {
 }
 
 class Red extends Gem {
-    static type = gem.red.type
+    static type = gem.red
     
     static supplements = [
         gem.red.color,
@@ -270,7 +285,7 @@ class Red extends Gem {
 }
 
 class Orange extends Gem {
-    static type = gem.orange.type
+    static type = gem.orange
     static supplements = [
         gem.orange.color,
         gem.red.color,
@@ -291,7 +306,7 @@ class Orange extends Gem {
 }
 
 class Yellow extends Gem {
-    static type = gem.yellow.type
+    static type = gem.yellow
     static supplements = [
         gem.yellow.color,
         gem.orange.color,
@@ -313,7 +328,7 @@ class Yellow extends Gem {
 }
 
 class Green extends Gem {
-    static type = gem.green.type
+    static type = gem.green
     static supplements = [
         gem.green.color,
         gem.yellow.color,
@@ -335,7 +350,7 @@ class Green extends Gem {
 }
 
 class Blue extends Gem {
-    static type = gem.blue.type
+    static type = gem.blue
     static supplements = [
         gem.blue.color,
         gem.green.color,
@@ -357,7 +372,7 @@ class Blue extends Gem {
 }
 
 class Violet extends Gem {
-    static type = gem.violet.type
+    static type = gem.violet
     static supplements = [
         gem.violet.color,
         gem.blue.color,
@@ -378,7 +393,7 @@ class Violet extends Gem {
 }
 
 class White extends Gem {
-    static type = gem.white.type
+    static type = gem.white
     static supplements = [
         gem.red.color,
         gem.orange.color,
